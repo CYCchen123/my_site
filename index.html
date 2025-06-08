@@ -17,9 +17,27 @@
       color: white;
       padding: 20px;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav {
+      background: #357a38;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      gap: 20px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 30px auto;
       padding: 20px;
       background: white;
@@ -34,7 +52,7 @@
       display: block;
       margin: 0 auto;
     }
-    h2 {
+    h2, h3 {
       text-align: center;
       margin-top: 10px;
     }
@@ -47,6 +65,112 @@
       color: #4caf50;
       text-decoration: none;
     }
+    /* 技能列表 */
+    .skills {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .skill-item {
+      background: #e0f2e9;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      color: #2e7d32;
+      box-shadow: 0 2px 5px rgba(46,125,50,0.2);
+    }
+    /* 项目展示 */
+    .projects {
+      margin-top: 40px;
+    }
+    .project-item {
+      background: #f0f8f5;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    }
+    /* 轮播图 */
+    .carousel {
+      margin: 30px auto;
+      max-width: 600px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .carousel img {
+      width: 100%;
+      display: none;
+      border-radius: 10px;
+    }
+    .carousel img.active {
+      display: block;
+    }
+    .carousel-controls {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .carousel-controls button {
+      background-color: #4caf50;
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      margin: 0 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .carousel-controls button:hover {
+      background-color: #388e3c;
+    }
+    /* 视频介绍 */
+    .video-section {
+      margin: 40px auto;
+      max-width: 700px;
+      text-align: center;
+    }
+    video {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    /* 搜索 */
+    .search-section {
+      margin: 40px auto;
+      max-width: 400px;
+      text-align: center;
+    }
+    .search-section input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      border: 2px solid #4caf50;
+      border-radius: 25px;
+      outline: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    .search-section input[type="text"]:focus {
+      border-color: #388e3c;
+      box-shadow: 0 0 5px #388e3c;
+    }
+    .search-section button {
+      background-color: #4caf50;
+      border: none;
+      color: white;
+      padding: 10px 18px;
+      margin-left: 5px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    .search-section button:hover {
+      background-color: #388e3c;
+    }
   </style>
 </head>
 <body>
@@ -55,18 +179,123 @@
     <h1>欢迎来到我的个人主页</h1>
   </header>
 
-  <div class="container">
+  <nav>
+    <a href="#about">关于我</a>
+    <a href="#skills">技能</a>
+    <a href="#projects">项目展示</a>
+    <a href="#gallery">图像轮播</a>
+    <a href="#video">视频介绍</a>
+    <a href="#search">知识检索</a>
+  </nav>
+
+  <div class="container" id="about">
     <img src="profile.jpg" alt="我的照片" class="profile-img" />
-    <h2>你好，我是张三</h2>
+    <h2>你好，我是乃龙</h2>
     <div class="info">
-      <p>我是一名对人工智能和前端开发充满热情的计算机专业学生。</p>
-      <p>目前正在学习如何结合 AI 和 Web 技术开发有趣的项目。</p>
+      <p>我是学生。</p>
+      <p>目前正在学习如何使用 AI。</p>
       <p class="contact">
-        📧 邮箱: <a href="mailto:zhangsan@example.com">zhangsan@example.com</a><br />
+        📧 邮箱: <a href="mailto:milkdragon@example.com">milkdragon@example.com</a><br />
         💻 GitHub: <a href="https://github.com/CYCchen123" target="_blank">CYCchen123</a>
       </p>
     </div>
   </div>
+
+  <div class="container" id="skills">
+    <h3>技能</h3>
+    <div class="skills">
+      <div class="skill-item">文本生成</div>
+      <div class="skill-item">图像生成</div>
+      <div class="skill-item">视频生成</div>
+      <div class="skill-item">代码生成</div>
+      <div class="skill-item">检索增强</div>
+      <div class="skill-item">模型对齐</div>
+    </div>
+  </div>
+
+  <div class="container projects" id="projects">
+    <h3>项目展示</h3>
+    <div class="project-item">
+      <h4>智能文本创作助手</h4>
+      <p>基于 AI 文本生成技术，自动创作文章和故事。</p>
+      <pre><code>function generateText(prompt) {
+  // 模拟文本生成逻辑
+  return "这是根据“" + prompt + "”生成的示例文本。";
+}</code></pre>
+    </div>
+    <div class="project-item">
+      <h4>图像自动生成示例</h4>
+      <p>根据描述自动生成图像。</p>
+      <pre><code>generateImage("夕阳下的海边") → [图像文件]</code></pre>
+    </div>
+    <div class="project-item">
+      <h4>视频生成演示</h4>
+      <p>利用图像和脚本自动生成短视频。</p>
+      <pre><code>generateVideo({images: [...], script: "未来AI发展"})</code></pre>
+    </div>
+  </div>
+
+  <div class="container" id="gallery">
+    <h3>图像轮播</h3>
+    <div class="carousel">
+      <img src="image1.jpg" alt="示例图1" class="active" />
+      <img src="image2.jpg" alt="示例图2" />
+      <img src="image3.jpg" alt="示例图3" />
+    </div>
+    <div class="carousel-controls">
+      <button id="prevBtn">上一张</button>
+      <button id="nextBtn">下一张</button>
+    </div>
+  </div>
+
+  <div class="container video-section" id="video">
+    <h3>视频介绍</h3>
+    <video controls>
+      <source src="sample_video.mp4" type="video/mp4" />
+      您的浏览器不支持视频播放。
+    </video>
+  </div>
+
+  <div class="container search-section" id="search">
+    <h3>知识检索增强</h3>
+    <input type="text" id="searchInput" placeholder="输入关键词搜索相关知识..." />
+    <button id="searchBtn">搜索</button>
+    <p id="searchResult"></p>
+  </div>
+
+<script>
+  // 图像轮播逻辑
+  const images = document.querySelectorAll('.carousel img');
+  let currentIndex = 0;
+
+  function showImage(index) {
+    images.forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+    });
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  });
+
+  // 模拟搜索功能（检索增强模块入口）
+  document.getElementById('searchBtn').addEventListener('click', () => {
+    const keyword = document.getElementById('searchInput').value.trim();
+    const result = document.getElementById('searchResult');
+    if (!keyword) {
+      result.textContent = "请输入关键词进行搜索。";
+      return;
+    }
+    // 模拟搜索返回结果
+    result.textContent = `“${keyword}” 的相关知识正在生成中...（这是模拟结果）`;
+  });
+</script>
 
 </body>
 </html>
