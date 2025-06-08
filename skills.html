@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>乃龙的个人主页</title>
+  <title>技能专长 - 乃龙</title>
   <style>
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f0f2f5;
+      color: #333;
       margin: 0;
       padding: 0;
-      color: #333;
     }
     nav {
       position: fixed;
@@ -47,16 +47,15 @@
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    h1 {
+    h2 {
       text-align: center;
       color: #007acc;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
-    p {
+    ul {
+      list-style-type: disc;
+      margin-left: 20px;
       font-size: 1.1em;
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto 15px auto;
     }
     @media(max-width: 600px) {
       .container {
@@ -75,17 +74,22 @@
 
   <nav>
     <ul>
-      <li><a href="index.html" class="active">主页</a></li>
+      <li><a href="index.html">主页</a></li>
       <li><a href="education.html">教育经历</a></li>
       <li><a href="work.html">工作经历</a></li>
-      <li><a href="skills.html">技能专长</a></li>
+      <li><a href="skills.html" class="active">技能专长</a></li>
       <li><a href="contact.html">联系方式</a></li>
     </ul>
   </nav>
 
   <div class="container">
-    <h1>欢迎来到乃龙的个人主页</h1>
-    <p>您好，我是乃龙，一名热爱技术与分享的开发者。这里展示了我的教育经历、工作经验、技能专长及联系方式。</p>
+    <h2>技能专长</h2>
+    <ul>
+      <li>熟练掌握 Python、JavaScript、C++</li>
+      <li>熟悉机器学习与深度学习框架（TensorFlow, PyTorch）</li>
+      <li>前端开发（HTML5, CSS3, React）</li>
+      <li>良好的团队协作与沟通能力</li>
+    </ul>
   </div>
 
 </body>
