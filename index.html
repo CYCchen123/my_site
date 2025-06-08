@@ -1,92 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>乃龙的个人主页</title>
+  <title>个人主页</title>
   <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f2f5;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #004a99;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      z-index: 1000;
-    }
-    nav ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      justify-content: center;
-    }
-    nav ul li a {
-      display: block;
-      padding: 15px 25px;
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-    nav ul li a:hover,
-    nav ul li a.active {
-      background-color: #007acc;
-    }
-    .container {
-      max-width: 900px;
-      background: white;
-      margin: 80px auto 60px;
-      padding: 25px 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    h1 {
-      text-align: center;
-      color: #007acc;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 1.1em;
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto 15px auto;
-    }
-    @media(max-width: 600px) {
-      .container {
-        padding: 20px 15px;
-      }
-      nav ul {
-        flex-direction: column;
-      }
-      nav ul li a {
-        padding: 12px 15px;
-      }
-    }
+    body { font-family: Arial; background: #f9f9f9; margin: 0; padding: 0; }
+    header { background: #4caf50; color: white; padding: 20px; text-align: center; }
+    .container { max-width: 800px; margin: auto; padding: 20px; background: white; }
+    .profile-img { width: 150px; border-radius: 50%; display: block; margin: auto; }
   </style>
 </head>
 <body>
-
-  <nav>
-    <ul>
-      <li><a href="index.html" class="active">主页</a></li>
-      <li><a href="education.html">教育经历</a></li>
-      <li><a href="work.html">工作经历</a></li>
-      <li><a href="skills.html">技能专长</a></li>
-      <li><a href="contact.html">联系方式</a></li>
-    </ul>
-  </nav>
-
+  <header><h1>欢迎来到我的主页</h1></header>
   <div class="container">
-    <h1>欢迎来到乃龙的个人主页</h1>
-    <p>您好，我是乃龙，一名热爱技术与分享的开发者。这里展示了我的教育经历、工作经验、技能专长及联系方式。</p>
+    <img src="images/profile.jpg" alt="我的头像" class="profile-img" />
+    <h2>你好，我是乃龙</h2>
+    <p>欢迎来到我的个人主页。</p>
   </div>
-
 </body>
 </html>
