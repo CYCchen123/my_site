@@ -1,20 +1,72 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>我的网站首页</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>我的个人网站</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #4caf50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .info {
+      margin-top: 20px;
+      line-height: 1.8;
+      text-align: center;
+    }
+    .contact a {
+      color: #4caf50;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">首页</a>
-    <a href="about.html">关于我</a>
-    <a href="contact.html">联系我</a>
-  </nav>
 
-  <main>
-    <h1>欢迎来到我的网站</h1>
-    <p>这是一个由 HTML 和 CSS 构建的简单网站。你可以在 GitHub Pages 上免费部署它。</p>
-  </main>
+  <header>
+    <h1>欢迎来到我的个人主页</h1>
+  </header>
+
+  <div class="container">
+    <img src="profile.jpg" alt="我的照片" class="profile-img" />
+    <h2>你好，我是张三</h2>
+    <div class="info">
+      <p>我是一名对人工智能和前端开发充满热情的计算机专业学生。</p>
+      <p>目前正在学习如何结合 AI 和 Web 技术开发有趣的项目。</p>
+      <p class="contact">
+        📧 邮箱: <a href="mailto:zhangsan@example.com">zhangsan@example.com</a><br />
+        💻 GitHub: <a href="https://github.com/CYCchen123" target="_blank">CYCchen123</a>
+      </p>
+    </div>
+  </div>
+
 </body>
 </html>
