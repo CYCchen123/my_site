@@ -1,12 +1,101 @@
-
 <!DOCTYPE html>
 <html lang="zh">
-<head><meta charset="UTF-8"><title>联系方式</title></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>联系方式 - 乃龙</title>
+  <style>
+    /* 统一样式 */
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #004a99;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+    nav ul li a {
+      display: block;
+      padding: 15px 25px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #007acc;
+    }
+    .container {
+      max-width: 900px;
+      background: white;
+      margin: 80px auto 60px;
+      padding: 25px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h2 {
+      color: #007acc;
+      margin-bottom: 25px;
+    }
+    p {
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+    a.email-link {
+      color: #007acc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a.email-link:hover {
+      text-decoration: underline;
+    }
+    @media(max-width: 600px) {
+      .container {
+        padding: 20px 15px;
+      }
+      nav ul {
+        flex-direction: column;
+      }
+      nav ul li a {
+        padding: 12px 15px;
+      }
+    }
+  </style>
+</head>
 <body>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">主页</a></li>
+      <li><a href="education.html">教育经历</a></li>
+      <li><a href="work.html">工作经历</a></li>
+      <li><a href="skills.html">技能专长</a></li>
+      <li><a href="contact.html" class="active">联系方式</a></li>
+    </ul>
+  </nav>
+
   <div class="container">
     <h2>联系方式</h2>
-    <img src="images/contact.png" alt="联系方式" style="height:100px;">
-    <p>邮箱: milkdragon@example.com<br>GitHub: CYCchen123</p>
+    <p>邮箱：<a href="mailto:nailong@example.com" class="email-link">nailong@example.com</a></p>
+    <p>电话：+86 138 0000 0000</p>
+    <p>微信：nailong_wechat</p>
   </div>
+
 </body>
 </html>
