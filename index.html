@@ -53,24 +53,29 @@
     }
     .slider {
       position: relative;
-      max-width: 900px;
+      width: 900px;
+      height: 500px;
       margin: 100px auto 20px; /* 顶部留导航和header的空 */
       overflow: hidden;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      user-select: none;
     }
     .slides {
       display: flex;
       transition: transform 0.5s ease-in-out;
-      width: 300%; /* 3张图 */
+      width: calc(900px * 3); /* 3张图片 */
+      height: 500px; /* 高度与容器一致 */
     }
     .slides img {
-      width: 100%;
+      width: 900px;
+      height: 500px;
       flex-shrink: 0;
       object-fit: cover;
       border-radius: 10px;
-      user-select: none;
       pointer-events: none;
+      user-select: none;
+      user-drag: none;
     }
     /* 箭头按钮 */
     .arrow {
@@ -155,6 +160,18 @@
       nav ul li a {
         padding: 12px 15px;
       }
+      .slider {
+        width: 100%;
+        height: auto;
+      }
+      .slides {
+        width: 300%;
+        height: auto;
+      }
+      .slides img {
+        width: 100%;
+        height: auto;
+      }
     }
   </style>
 </head>
@@ -177,7 +194,7 @@
     <div class="slides">
       <img src="pic1.jpg" alt="图片1" />
       <img src="pic2.jpg" alt="图片2" />
-      <img src=pic3.jpg" alt="图片3" />
+      <img src="pic3.jpg" alt="图片3" />
     </div>
     <button class="arrow arrow-right" aria-label="下一张图片">&#10095;</button>
   </div>
@@ -206,7 +223,7 @@
     if (index < 0) index = imagesCount - 1;
     if (index >= imagesCount) index = 0;
     currentIndex = index;
-    slides.style.transform = `translateX(${-index * 100}%)`;
+    slides.style.transform = `translateX(${-index * 900}px)`;
   }
 
   prevBtn.addEventListener('click', () => {
@@ -237,4 +254,3 @@
 
 </body>
 </html>
-
