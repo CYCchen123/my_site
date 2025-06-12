@@ -146,10 +146,72 @@
       border: none;
       border-radius: 5px;
       text-decoration: none;
+      cursor: pointer;
+      user-select: none;
     }
     .read-more-btn:hover {
       background-color: #005a9e;
     }
+
+    /* 新增算法模块容器 */
+    .algorithms {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .algo-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,122,204,0.15);
+      width: 300px;
+      height: 300px;
+      padding: 25px;
+      text-decoration: none;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+    }
+    .algo-card:hover {
+      box-shadow: 0 10px 25px rgba(0,122,204,0.3);
+      transform: translateY(-8px);
+    }
+    .algo-card h3 {
+      margin: 0 0 15px 0;
+      color: #007acc;
+      font-size: 1.5em;
+    }
+    .algo-card p {
+      font-size: 1.05em;
+      line-height: 1.4;
+      flex-grow: 1;
+    }
+    .algo-card .read-more-btn {
+      background-color: #007acc;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 600;
+      user-select: none;
+    }
+    .algo-card .read-more-btn:hover {
+      background-color: #005a9e;
+    }
+
+    /* 响应式调整 */
+    @media(max-width: 650px) {
+      .algorithms {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* 小屏幕轮播调整 */
     @media(max-width: 600px) {
       .container {
         padding: 20px 15px;
@@ -204,6 +266,21 @@
     <h2>你好，我是乃龙</h2>
     <p>一名充满热情的软件开发者，喜欢探索人工智能和前沿技术，致力于用代码解决现实问题，持续成长和学习。</p>
 
+    <!-- 算法正方形模块 -->
+    <div class="algorithms">
+      <a href="josephus.html" class="algo-card" aria-label="约瑟夫环算法详情">
+        <h3>🪦 约瑟夫环算法</h3>
+        <p>解决经典的报数淘汰问题，递推公式与代码实现详解。</p>
+        <div class="read-more-btn">查看详情</div>
+      </a>
+
+      <a href="knapsack.html" class="algo-card" aria-label="0-1 背包问题">
+        <h3>🎒 0-1 背包问题</h3>
+        <p>动态规划经典问题，最大化价值的物品选择策略。</p>
+        <div class="read-more-btn">查看详情</div>
+      </a>
+    </div>
+
     <div class="article-preview">
       <h3>📦 0-1 背包问题详解</h3>
       <p>0-1 背包问题是动态规划的经典案例，旨在从多个物品中选择若干个放入容量有限的背包中，使得总价值最大。本文将从问题定义、算法思路到代码优化逐步分析……</p>
@@ -237,20 +314,4 @@
   });
 
   // 自动轮播
-  let autoSlideInterval = setInterval(() => {
-    showSlide(currentIndex + 1);
-  }, 4000);
-
-  function resetAutoSlide() {
-    clearInterval(autoSlideInterval);
-    autoSlideInterval = setInterval(() => {
-      showSlide(currentIndex + 1);
-    }, 4000);
-  }
-
-  // 初始显示第一张
-  showSlide(0);
-</script>
-
-</body>
-</html>
+  let autoSlideInterval = set

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>🪦 约瑟夫环问题详解</title>
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px 60px;
+    background: #fff;
+    color: #222;
+    line-height: 1.6;
+  }
+  h1, h2, h3 {
+    color: #007acc;
+  }
+  h1 {
+    font-size: 2.2em;
+    margin-bottom: 0.3em;
+  }
+  h2 {
+    margin-top: 1.8em;
+    margin-bottom: 0.5em;
+  }
+  p, li {
+    font-size: 1.1em;
+  }
+  ul {
+    margin-left: 1.5em;
+  }
+  code {
+    background: #f4f4f4;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: Consolas, monospace;
+  }
+  pre {
+    background: #f4f4f4;
+    border-left: 4px solid #007acc;
+    padding: 12px 15px;
+    overflow-x: auto;
+    border-radius: 5px;
+  }
+  .formula {
+    font-weight: bold;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2em;
+    margin: 0.8em 0;
+    color: #004a99;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #888;
+    font-size: 0.9em;
+  }
+  a {
+    color: #007acc;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+  <h1>🪦 约瑟夫环问题详解</h1>
+
+  <h2>一、问题背景</h2>
+  <p>
+    传说公元1世纪，约瑟夫和他的40个士兵被敌人围困，选择集体自杀。士兵们排成一圈，报数到第 <code>k</code> 个人就自杀，之后从下一人重新开始报数，直到剩下最后一个人。这个“幸存者”就是约瑟夫。
+  </p>
+  <p>问题是：</p>
+  <ul>
+    <li>给定人数 <code>n</code></li>
+    <li>报数的间隔 <code>k</code></li>
+    <li>求最后幸存者的位置（编号）</li>
+  </ul>
+
+  <h2>二、问题描述</h2>
+  <ul>
+    <li><code>n</code> 个人编号为 1, 2, ..., <code>n</code></li>
+    <li>从第1个人开始报数，每数到第 <code>k</code> 个人，将其淘汰</li>
+    <li>淘汰的人退出圆圈，剩下的人继续从下一个开始报数</li>
+    <li>不断循环直到只剩1人</li>
+    <li>求最后幸存者的编号</li>
+  </ul>
+
+  <h2>三、问题分析（递推公式）</h2>
+  <p>
+    设 <code>f(n, k)</code> 表示 <code>n</code> 个人、数到第 <code>k</code> 个淘汰，最后的幸存者编号（相对于这 <code>n</code> 个人的初始编号）。
+  </p>
+  <p>当 <code>n=1</code> 时，只有一个人，他自然是幸存者：</p>
+  <div class="formula">f(1, k) = 0</div>
+  <p>（我们用 <strong>0-based 编号</strong> 简化递推）</p>
+  <p>当 <code>n > 1</code> 时：</p>
+  <p>被淘汰的第 <code>k</code> 个人位置为 <code>(k-1) % n</code> （0-based）。</p>
+  <p>淘汰后，人数变为 <code>n-1</code>，问题规模减小，幸存者位置也会改变，需要“映射回”原始编号。</p>
+  <div class="formula">
+    f(n, k) = (f(n - 1, k) + k) mod n
+  </div>
+
+  <h2>四、转换回 1-based 编号</h2>
+  <p>如果题目编号从1开始，则：</p>
+  <div class="formula">
+    结果 = f(n, k) + 1
+  </div>
+
+  <h2>五、示例</h2>
+  <p>假设 <code>n=5</code>, <code>k=3</code>：</p>
+  <p>初始：5 个人，编号 [1, 2, 3, 4, 5]</p>
+  <p>报数3，淘汰第3个人：编号3</p>
+  <p>剩下 [1, 2, 4, 5]</p>
+  <p>继续报数3，从编号4开始计数：4(1),5(2),1(3)，淘汰编号1</p>
+  <p>剩下 [2, 4, 5]</p>
+  <p>从编号2开始：2(1),4(2),5(3)，淘汰编号5</p>
+  <p>剩下 [2, 4]</p>
+  <p>从编号2开始：2(1),4(2),2(3)，淘汰编号2</p>
+  <p>最后剩编号4</p>
+
+  <p>计算过程（0-based）：</p>
+  <pre>
+f(1,3) = 0
+f(2,3) = (f(1,3) + 3) % 2 = (0 + 3) % 2 = 1
+f(3,3) = (f(2,3) + 3) % 3 = (1 + 3) % 3 = 1
+f(4,3) = (f(3,3) + 3) % 4 = (1 + 3) % 4 = 0
+f(5,3) = (f(4,3) + 3) % 5 = (0 + 3) % 5 = 3
+  </pre>
+  <p>结果是 <code>f(5,3)+1 = 4</code>，跟上面模拟的结果一致。</p>
+
+  <h2>六、代码实现（递归+迭代）</h2>
+
+  <h3>1. 递归版本（简洁）</h3>
+  <pre><code>int josephus(int n, int k) {
+    if (n == 1)
+        return 0;
+    return (josephus(n - 1, k) + k) % n;
+}
+// 结果是 0-based，调用时输出 josephus(n, k) + 1。
+</code></pre>
+
+  <h3>2. 迭代版本（推荐）</h3>
+  <pre><code>int josephus(int n, int k) {
+    int res = 0;
+    for (int i = 2; i <= n; ++i) {
+        res = (res + k) % i;
+    }
+    return res;
+}
+</code></pre>
+
+  <h2>七、应用及变体</h2>
+  <ul>
+    <li>间隔数不同：<code>k</code> 可不固定</li>
+    <li>多圈约瑟夫：循环多个回合</li>
+    <li>约瑟夫问题变体：不同规则淘汰方式</li>
+    <li>数据结构实现：链表模拟报数淘汰</li>
+  </ul>
+
+  <h2>八、小结</h2>
+  <table>
+    <tr><th style="text-align:left; padding-right: 1em;">关键词</th><th style="text-align:left;">说明</th></tr>
+    <tr><td>约瑟夫环</td><td>环状排列中的报数淘汰问题</td></tr>
+    <tr><td>递推公式</td><td><code>f(n,k) = (f(n−1,k) + k) mod n</code></td></tr>
+    <tr><td>编号起点</td><td>通常 0-based，更好计算</td></tr>
+    <tr><td>最终答案</td><td><code>f(n,k)+1</code>（1-based）作为结果</td></tr>
+  </table>
+
+  <div class="footer">
+    © 2025 乃龙的算法学习网站
+  </div>
+
+</body>
+</html>
