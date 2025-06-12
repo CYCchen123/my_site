@@ -55,7 +55,7 @@
       position: relative;
       width: 900px;
       height: 500px;
-      margin: 100px auto 20px; /* 顶部留导航和header的空 */
+      margin: 100px auto 20px;
       overflow: hidden;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -64,8 +64,8 @@
     .slides {
       display: flex;
       transition: transform 0.5s ease-in-out;
-      width: calc(900px * 3); /* 3张图片 */
-      height: 500px; /* 高度与容器一致 */
+      width: calc(900px * 3);
+      height: 500px;
     }
     .slides img {
       width: 900px;
@@ -74,10 +74,7 @@
       object-fit: cover;
       border-radius: 10px;
       pointer-events: none;
-      user-select: none;
-      user-drag: none;
     }
-    /* 箭头按钮 */
     .arrow {
       position: absolute;
       top: 50%;
@@ -89,8 +86,6 @@
       padding: 5px 12px;
       cursor: pointer;
       border-radius: 50%;
-      user-select: none;
-      transition: background-color 0.3s ease;
       z-index: 10;
     }
     .arrow:hover {
@@ -102,6 +97,25 @@
     .arrow-right {
       right: 15px;
     }
+
+    .dots {
+      text-align: center;
+      margin-top: 12px;
+    }
+    .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 6px;
+      background-color: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .dot.active {
+      background-color: #007acc;
+    }
+
     .container {
       max-width: 900px;
       background: white;
@@ -128,32 +142,7 @@
       line-height: 1.6;
       font-size: 1.1em;
     }
-    .article-preview {
-      background-color: #f9f9f9;
-      border-left: 5px solid #007acc;
-      padding: 20px;
-      margin-top: 40px;
-    }
-    .article-preview h3 {
-      color: #004a99;
-    }
-    .read-more-btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 16px;
-      background-color: #007acc;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-      cursor: pointer;
-      user-select: none;
-    }
-    .read-more-btn:hover {
-      background-color: #005a9e;
-    }
 
-    /* 新增算法模块容器 */
     .algorithms {
       display: flex;
       gap: 25px;
@@ -203,7 +192,6 @@
       background-color: #005a9e;
     }
 
-    /* 响应式调整 */
     @media(max-width: 650px) {
       .algorithms {
         flex-direction: column;
@@ -211,7 +199,6 @@
       }
     }
 
-    /* 小屏幕轮播调整 */
     @media(max-width: 600px) {
       .container {
         padding: 20px 15px;
@@ -260,54 +247,85 @@
     </div>
     <button class="arrow arrow-right" aria-label="下一张图片">&#10095;</button>
   </div>
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
 
   <div class="container">
     <img src="https://i.pravatar.cc/160?img=12" alt="乃龙的头像" class="profile-img" />
     <h2>你好，我是乃龙</h2>
     <p>一名充满热情的软件开发者，喜欢探索人工智能和前沿技术，致力于用代码解决现实问题，持续成长和学习。</p>
 
-<h3 style="text-align:center; color:#007acc; margin-top:40px;">文章示例</h3>
-
-    <!-- 算法正方形模块 -->
+    <h3>文章示例</h3>
     <div class="algorithms">
       <a href="josephus.html" class="algo-card" aria-label="约瑟夫环算法详情">
         <h3>🪦 约瑟夫环算法</h3>
         <p>解决经典的报数淘汰问题，递推公式与代码实现详解。</p>
         <div class="read-more-btn">查看详情</div>
       </a>
-
       <a href="knapsack.html" class="algo-card" aria-label="0-1 背包问题">
         <h3>🎒 0-1 背包问题</h3>
         <p>动态规划经典问题，最大化价值的物品选择策略。</p>
         <div class="read-more-btn">查看详情</div>
       </a>
     </div>
+  </div>
 
+  <script>
+    const slides = document.querySelector('.slides');
+    const imagesCount = slides.children.length;
+    const prevBtn = document.querySelector('.arrow-left');
+    const nextBtn = document.querySelector('.arrow-right');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
 
-<script>
-  const slides = document.querySelector('.slides');
-  const imagesCount = slides.children.length;
-  let currentIndex = 0;
+    function showSlide(index) {
+      if (index < 0) index = imagesCount - 1;
+      if (index >= imagesCount) index = 0;
+      currentIndex = index;
+      slides.style.transform = `translateX(${-index * 900}px)`;
+      updateDots();
+    }
 
-  const prevBtn = document.querySelector('.arrow-left');
-  const nextBtn = document.querySelector('.arrow-right');
+    function updateDots() {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    }
 
-  function showSlide(index) {
-    if (index < 0) index = imagesCount - 1;
-    if (index >= imagesCount) index = 0;
-    currentIndex = index;
-    slides.style.transform = `translateX(${-index * 900}px)`;
-  }
+    prevBtn.addEventListener('click', () => {
+      showSlide(currentIndex - 1);
+      resetAutoSlide();
+    });
 
-  prevBtn.addEventListener('click', () => {
-    showSlide(currentIndex - 1);
-    resetAutoSlide();
-  });
+    nextBtn.addEventListener('click', () => {
+      showSlide(currentIndex + 1);
+      resetAutoSlide();
+    });
 
-  nextBtn.addEventListener('click', () => {
-    showSlide(currentIndex + 1);
-    resetAutoSlide();
-  });
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        showSlide(i);
+        resetAutoSlide();
+      });
+    });
 
-  // 自动轮播
-  let autoSlideInterval = set
+    let autoSlideInterval = setInterval(() => {
+      showSlide(currentIndex + 1);
+    }, 4000);
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, 4000);
+    }
+
+    showSlide(0);
+  </script>
+
+</body>
+</html>
+
