@@ -19,7 +19,7 @@
       text-align: center;
       font-size: 2em;
       font-weight: bold;
-      margin-top: 50px; /* 顶部导航栏高度补偿 */
+      margin-top: 50px;
     }
     nav {
       position: fixed;
@@ -80,6 +80,28 @@
     section {
       margin-bottom: 40px;
     }
+    .article-preview {
+      background-color: #f9f9f9;
+      border-left: 5px solid #007acc;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .article-preview h3 {
+      color: #004a99;
+    }
+    .read-more-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .read-more-btn:hover {
+      background-color: #005a9e;
+    }
     @media(max-width: 600px) {
       .container {
         padding: 20px 15px;
@@ -112,7 +134,13 @@
     <h2>你好，我是乃龙</h2>
     <p>一名充满热情的软件开发者，喜欢探索人工智能和前沿技术，致力于用代码解决现实问题，持续成长和学习。</p>
 
+    <div class="article-preview">
+      <h3>📦 0-1 背包问题详解</h3>
+      <p>0-1 背包问题是动态规划的经典案例，旨在从多个物品中选择若干个放入容量有限的背包中，使得总价值最大。本文将从问题定义、算法思路到代码优化逐步分析……</p>
+      <a href="knapsack.html" class="read-more-btn">📖 阅读完整文章</a>
+    </div>
   </div>
 
 </body>
 </html>
+
