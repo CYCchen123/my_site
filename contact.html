@@ -65,6 +65,58 @@
     a.email-link:hover {
       text-decoration: underline;
     }
+    /* 新增表单样式 */
+    form {
+      margin-top: 30px;
+      text-align: left;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    label {
+      display: block;
+      margin: 15px 0 6px;
+      font-weight: 600;
+      color: #333;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1.5px solid #ccc;
+      font-size: 1em;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: #007acc;
+      outline: none;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    button {
+      margin-top: 25px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #005a9e;
+    }
     @media(max-width: 600px) {
       .container {
         padding: 20px 15px;
@@ -74,6 +126,9 @@
       }
       nav ul li a {
         padding: 12px 15px;
+      }
+      form {
+        max-width: 100%;
       }
     }
   </style>
@@ -95,6 +150,23 @@
     <p>邮箱：<a href="mailto:nailong@example.com" class="email-link">nailong@example.com</a></p>
     <p>电话：+86 138 0000 0000</p>
     <p>微信：nailong_wechat</p>
+
+    <!-- 新增的联系方式填写表单 -->
+    <form>
+      <label for="name">姓名：</label>
+      <input type="text" id="name" name="name" placeholder="请输入您的姓名" required />
+
+      <label for="email">邮箱：</label>
+      <input type="email" id="email" name="email" placeholder="请输入您的邮箱" required />
+
+      <label for="phone">电话：</label>
+      <input type="text" id="phone" name="phone" placeholder="请输入联系电话" />
+
+      <label for="message">留言：</label>
+      <textarea id="message" name="message" placeholder="请输入留言内容"></textarea>
+
+      <button type="submit">发送</button>
+    </form>
 
   </div>
 
